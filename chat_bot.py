@@ -1,6 +1,6 @@
 import panel as pn
 from cbfs import cbfs
-
+pn.extension()
 cb = cbfs()
 
 file_input=pn.widgets.FileInput(accept='.pdf')
