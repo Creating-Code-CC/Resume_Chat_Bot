@@ -1,6 +1,8 @@
+import system
 import lib
 import openai
 import os
+
 # def func(file, kwargs={})
 def load_db(file, chain_type, k):
 # Load Documents
