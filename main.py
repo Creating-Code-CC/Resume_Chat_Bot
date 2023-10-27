@@ -36,7 +36,7 @@ class cbfs(param.Parameterized):
         self.answer=result['answer']
         self.panels.extend([
             pn.Row('User:', pn.pane.Markdown(query, width=600)),
-            pn.Row('ChatBot:', pn.pane.Markdown(self.answer, width=600, style={"background-color":"#F6F6F6"}))
+            pn.Row('ChatBot:', pn.pane.Markdown(self.answer, width=600, styles={"background-color":"#F6F6F6"}))
 
         ])
 
@@ -44,3 +44,14 @@ class cbfs(param.Parameterized):
 
         return pn.WidgetBox(*self.panels,scroll=True)
     
+    @param.depends('db_query')
+    def get_lquest(self):
+        if not self.db_query:
+            return pn.Column(
+                pn.Row(pn.pane.Markdown(f"Last quesion to DB:", styles={'background-color':'#F6F6F6'})),
+                pn.Row(pn.pane.Markdown(f"no DB access so far"))
+            )
+        return pn.Column(
+            pn.Row(pn.pane.Markdown(f"DB query:", styles={'background-color':'#F6F6F6'})),
+            pn.pane.Str(self.db_query)
+        )
