@@ -1,4 +1,4 @@
-import load_db as db
+from load_db import load_db as load_db
 import panel as pn
 import param
 
