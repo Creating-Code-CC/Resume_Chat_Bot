@@ -4,6 +4,7 @@ import os
 import sys
 from dotenv import load_dotenv, find_dotenv
 _=load_dotenv(find_dotenv())
+openai.api_key=os.environ['OPENAI_API_KEY']
 # def func(file, kwargs={})
 def load_db(file, chain_type, k):
 # Load Documents
