@@ -2,7 +2,17 @@ import lib
 import openai
 import os
 import sys
+import datetime
 from dotenv import load_dotenv, find_dotenv
+
+llm_name=""
+current_date = datetime.datetime.now().date()
+if current_date < datetime.date(2023, 9, 2):
+    llm_name = "gpt-3.5-turbo-0301"
+else:
+    llm_name = "gpt-3.5-turbo"
+
+
 _=load_dotenv(find_dotenv())
 openai.api_key=os.environ['OPENAI_API_KEY']
 # def func(file, kwargs={})
