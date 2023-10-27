@@ -18,7 +18,7 @@ def load_db(file, chain_type, k):
     # Create embeddings before creating vector store
     embeddings = lib.OpenAIEmbeddings()
     # Create Vector Store with embeddings for Semantic Search
-    db = lib.DocArrayInMemorySearch.from_documents(docs = docs,embeddings=embeddings)
+    db = lib.DocArrayInMemorySearch.from_documents(documents = docs,embedding=embeddings)
 
     # Create retriever
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k":k}) # Have ChatGPT explain this line
