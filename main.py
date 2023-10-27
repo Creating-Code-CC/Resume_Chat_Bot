@@ -3,6 +3,8 @@ import panel as pn
 import param
 
 class cbfs(param.Parameterized):
-    chat_history = param.List([])
-
+    chat_history=param.List([])
+    answer=param.String("")
+    db_query=param.String("")
+    db_response=param.List([])
     
