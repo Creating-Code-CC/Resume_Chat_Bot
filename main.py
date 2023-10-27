@@ -3,4 +3,6 @@ import panel as pn
 import param
 
 class cbfs(param.Parameterized):
+    chat_history = param.List([])
+
     
