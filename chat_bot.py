@@ -12,7 +12,7 @@ inp=pn.widgets.TextInput(placeholder='Enter text here...')
 bound_button_load=pn.bind(cb.call_load_db, button_load.param.clicks)
 conversation=pn.bind(cb.convchain,inp)
 
-jpg_pane=pn.pane.Image( './img/dir.jpg')
+png_pane=pn.pane.Image( './img/social_media_github.png')
 
 tab1=pn.Column(
     pn.Row(inp),
@@ -33,7 +33,7 @@ tab4=pn.Column(
     pn.Row(file_input, button_load, bound_button_load),
     pn.Row(button_clearhistory, pn.pane.Markdown("Clears chat history. Can use to start a new topic")),
     pn.layout.Divider(),
-    pn.Row(jpg_pane.clone(width=400))
+    pn.Row(png_pane.clone(width=400))
 )
 dashboard=pn.Column(
     pn.Row(pn.pane.Markdown('# SmittyChatBot_IYAOYAS')),
