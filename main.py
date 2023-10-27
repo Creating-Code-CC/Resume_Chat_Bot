@@ -63,4 +63,11 @@ class cbfs(param.Parameterized):
         for doc in self.db_response:
             rlist.append(pn.Row(pn.pane.Str(doc)))
         return pn.WidgetBox(*rlist, width=600, scroll=True)
-
+    @param.depends('convchain', 'clr_history')
+    def get_chats(self):
+        if not self.chat_history:
+            return pn.WidgetBox(pn.Row(pn.pane.Str("No History Yet")),width=600, scroll=True)
+        rlist=[pn.Row(pn.pane.Markdown(f"Current Chat History variable", styles={'background-color':'#F6F6F6'}))]
+        for exchange in self.chat_history:
+            rlist.append(pn.Row(pn.pane.Str(exchange)))
+        return pn.WidgetBox(*rlist, width=600, scroll=True)
