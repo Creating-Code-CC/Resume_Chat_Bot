@@ -71,3 +71,7 @@ class cbfs(param.Parameterized):
         for exchange in self.chat_history:
             rlist.append(pn.Row(pn.pane.Str(exchange)))
         return pn.WidgetBox(*rlist, width=600, scroll=True)
+
+    def clr_history(self,count=0):
+        self.chat_history=[]
+        return
