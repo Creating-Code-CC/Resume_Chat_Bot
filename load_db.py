@@ -15,5 +15,9 @@ def load_db(file, chain_type, k):
     db = lib.DocArrayInMemorySearch.from_documents(docs = docs,embeddings=embeddings)
 
     # Create retriever
-    retriever = db.as_retriever(search_type="similarity", search_kwargs={"k":k})
+    retriever = db.as_retriever(search_type="similarity", search_kwargs={"k":k}) # Have ChatGPT explain this line
+
+    qa = lib.ConversationalRetrievalChain.from_llm(llm=lib.ChatOpenAI(model_name=llm_name, temperature=0), chain_type=chain_type, retriever=retriever, return_source_documents= True, return_generated_question=True,)
+
+    return qa
    
