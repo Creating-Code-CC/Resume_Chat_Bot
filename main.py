@@ -22,8 +22,25 @@ class cbfs(param.Parameterized):
             button_load.button_style="outline"
             self.qa=load_db("temp.pdf", "stuff", 4)
             button_load.button_style="solid"
-            
+
         self.clr_history()
 
         return pn.pane.Markdown(f"Loaded File: {self.loaded_file}")
+    def convchain(self, query):
+        if not query:
+            return pn.WidgetBox(pn.Row('User: ', pn.pane.Markdown("", width=600)), scroll=True)
+        result=self.qa({"question": query, "chat_history": self.chat_history})
+        self.chat_history.extend([query, result["answer"]])
+        self.db_query=result["generated_question"]
+        self.db_response=result["source_documents"]
+        self.answer=result['answer']
+        self.panels.extend([
+            pn.Row('User:', pn.pane.Markdown(query, width=600)),
+            pn.Row('ChatBot:', pn.pane.Markdown(self.answer, width=600, style={"background-color":"#F6F6F6"}))
+
+        ])
+
+        inp.value=''#clears loading indicator when cleared.
+
+        return pn.WidgetBox(*self.panels,scroll=True)
     
