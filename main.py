@@ -44,7 +44,7 @@ class cbfs(param.Parameterized):
 
         return pn.WidgetBox(*self.panels,scroll=True)
     
-    @param.depends('db_query')
+    @param.depends('db_query', )
     def get_lquest(self):
         if not self.db_query:
             return pn.Column(
@@ -55,3 +55,12 @@ class cbfs(param.Parameterized):
             pn.Row(pn.pane.Markdown(f"DB query:", styles={'background-color':'#F6F6F6'})),
             pn.pane.Str(self.db_query)
         )
+    @param.depends('db_response', )
+    def get_sources(self):
+        if not self.db_response:
+            return
+        rlist=[pn.Row(pn.pane.Markdown(f"Result of DB lookup:", styles={'background-color':'#F6F6F6'}))]
+        for doc in self.db_response:
+            rlist.append(pn.Row(pn.pane.Str(doc)))
+        return pn.WidgetBox(*rlist, width=600, scroll=True)
+
