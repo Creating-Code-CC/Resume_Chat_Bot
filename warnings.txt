@@ -1,0 +1,1 @@
+WARNING: The scripts pip, pip3 and pip3.10 are installed in '/usr/local/python/3.10.8/bin' which is not on PATH.
