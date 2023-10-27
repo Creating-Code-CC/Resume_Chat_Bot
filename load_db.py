@@ -2,6 +2,8 @@ import lib
 import openai
 import os
 import sys
+from dotenv import load_dotenv, find_dotenv
+_=load_dotenv(find_dotenv())
 # def func(file, kwargs={})
 def load_db(file, chain_type, k):
 # Load Documents
