@@ -1,3 +1,5 @@
+"""""openai"""
+import sys
 import panel as pn
 from cbfs import cbfs
 pn.extension()
@@ -31,7 +33,9 @@ tab3=pn.Column(
 )
 tab4=pn.Column(
     pn.Row(file_input, button_load, bound_button_load),
-    pn.Row(button_clearhistory, pn.pane.Markdown("Clears chat history. Can use to start a new topic")),
+    pn.Row(
+        button_clearhistory,
+        pn.pane.Markdown("Clears chat history. Can use to start a new topic")),
     pn.layout.Divider(),
     pn.Row(png_pane.clone(width=400))
 )
@@ -40,4 +44,12 @@ dashboard=pn.Column(
     pn.Tabs(('Conversation', tab1), ('Database', tab2), ('Chat History', tab3), ('Configure', tab4))
 )
 
-dashboard
+if __name__.startswith('bokeh'):
+    dashboard.servable()
+else:
+    dashboard.show()
+    # dashboard.save('dashboard.html', embed=True)
+    # pn.serve(dashboard, port=5006, show=True, websocket_origin='localhost:5006')
+    # bokeh serve --show
+
+# EOF

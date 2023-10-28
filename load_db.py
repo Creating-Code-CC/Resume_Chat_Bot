@@ -1,7 +1,7 @@
+import sys
 import lib
 import openai
 import os
-import sys
 import datetime
 from dotenv import load_dotenv, find_dotenv
 
