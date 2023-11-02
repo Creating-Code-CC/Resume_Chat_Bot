@@ -11,7 +11,7 @@ class cbfs(param.Parameterized):
     def __init__(self, **params):
         super(cbfs, self).__init__(**params)
         self.panels=[]
-        self.loaded_file="./data/dev_resume.pdf"
+        self.loaded_file="./data/resume_ai.pdf"
         self.qa=load_db(self.loaded_file,"stuff",4)
     def call_load_db(self, count):
         if count==0 or file_input.value is None:#init or no file specified
