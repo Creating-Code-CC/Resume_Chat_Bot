@@ -111,7 +111,7 @@ tab4=pn.Column(
     pn.Row(png_pane.clone(width=400))
 )
 dashboard=pn.Column(
-    pn.Row(pn.pane.Markdown('# SmittyChatBot_IYAOYAS')),
+    pn.Row(pn.pane.Markdown('# GPTResume')),
     pn.Tabs(('Conversation', tab1), ('Database', tab2), ('Chat History', tab3), ('Configure', tab4))
 )
 
