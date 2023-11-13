@@ -1,6 +1,8 @@
 from load_db import load_db as load_db
-import panel as pn
 import param
+import panel as pn
+pn.extension()
+
 
 class cbfs(param.Parameterized):
     chat_history=param.List([])
@@ -27,7 +29,7 @@ class cbfs(param.Parameterized):
     
     def convchain(self, query):
         if not query:
-            return pn.WidgetBox(pn.Row('User:', pn.pane.Markdown("", width=600)), scroll=True)
+            return pn.WidgetBox(pn.Row('User:', pn.pane.Markdown("", width=600)))
         result=self.qa({"question": query, "chat_history": self.chat_history})
         self.chat_history.extend([(query, result["answer"])])
         self.db_query=result["generated_question"]
@@ -73,8 +75,6 @@ class cbfs(param.Parameterized):
     def clr_history(self,count=0):
         self.chat_history=[]
         return
-    
-    pn.extension()
     
 cb = cbfs()
 
