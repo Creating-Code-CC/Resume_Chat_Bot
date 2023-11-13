@@ -66,7 +66,7 @@ class cbfs(param.Parameterized):
     @param.depends('convchain', 'clr_history')
     def get_chats(self):
         if not self.chat_history:
-            return pn.WidgetBox(pn.Row(pn.pane.Str("No History Yet")),width=600, scroll=True)
+            return pn.WidgetBox(pn.Row(pn.pane.Str("No History Yet")),width=1200, scroll=True)
         rlist=[pn.Row(pn.pane.Markdown(f"Current Chat History variable", styles={'background-color':'#F6F6F6'}))]
         for exchange in self.chat_history:
             rlist.append(pn.Row(pn.pane.Str(exchange)))
